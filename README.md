@@ -1,4 +1,7 @@
-# MyAng2App
+# My Tour of Heroes Angular2 App
+
+This is my personal implementation of the official Angular tutorial [Tour of Heroes](https://angular.io/tutorial)
+I added Bootstrap@3, jQuery and localStorage
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
 
