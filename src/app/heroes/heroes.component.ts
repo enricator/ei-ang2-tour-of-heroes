@@ -8,9 +8,10 @@ import { HEROES } from '../mock-heroes';
   styleUrls: ['./heroes.component.css'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class HeroesComponent implements OnInit {
 
-  heroes = HEROES;
+  heroes = this.getHeroes();
 
   selectedHero: Hero;
 
@@ -18,9 +19,23 @@ export class HeroesComponent implements OnInit {
     this.selectedHero = hero;
   }
 
-  constructor() { }
+  // TODO: update localStorage when hero name is changed in input #heroName
+  
+  constructor() {  }
 
-  ngOnInit() {
+  ngOnInit() {  }
+
+  getHeroes() {
+    let lsHeroes = localStorage.getItem("toh-heroes");
+    let heroesJson = JSON.parse(lsHeroes);
+    if (heroesJson != null) {
+      console.log('found localStorage: ' + heroesJson.length + ' heroes');
+      return heroesJson;
+    } else {
+      console.log('no heroes found in localStorage: generating mock heroes');
+      localStorage.setItem('toh-heroes',JSON.stringify(HEROES));
+      return HEROES;
+    }
   }
 
 }
