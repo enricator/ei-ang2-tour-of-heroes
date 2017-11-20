@@ -5,16 +5,35 @@
   </div>
 </div>
 
-<div class="panel panel-primary">
-  <div class="panel-heading">{{ hero.name | uppercase }} Details</div>
-  <div class="panel-body">
-    <div class="form-inline">
-      <div><span>id: </span>{{hero.id}}</div>
-      <div class="form-group">
-        <label for="heroName">name:</label>
-        <input type="text" class="form-control" id="heroName"
-               [(ngModel)]="hero.name" placeholder="Hero name">
+<div class="row">
+  <div class="col col-sm-4">
+    <h3>My Heroes</h3>
+    <ul class="heroes">
+      <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
+        <span class="badge">{{hero.id}}</span> {{hero.name}}
+      </li>
+    </ul>
+  </div>
+
+  <div class="col col-sm-8" *ngIf="selectedHero">
+    <h3>&nbsp;</h3>
+    <div class="panel panel-primary">
+      <div class="panel-heading">{{ selectedHero.name | uppercase }} details</div>
+      <div class="panel-body">
+        <div class="form-inline">
+          <div><span>id: </span>{{selectedHero.id}}</div>
+          <div class="form-group">
+            <label for="heroName">name:</label>
+            <input type="text" class="form-control" id="heroName"
+                   [(ngModel)]="selectedHero.name" placeholder="Hero name">
+          </div>
+        </div>
       </div>
     </div>
   </div>
+</div>
+
+<div class="row">
+
+
 </div>
