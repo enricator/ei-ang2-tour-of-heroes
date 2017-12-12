@@ -1,39 +1,23 @@
 <div class="row">
-  <div class="alert alert-success" role="alert">
-    heroes component works!
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  </div>
-</div>
 
-<div class="row">
   <div class="col col-sm-4">
     <h3>My Heroes</h3>
-    <ul class="heroes">
-      <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero">
-        <span class="badge">{{hero.id}}</span> {{hero.name}}
+    <ul class="list-group heroes">
+      <li *ngFor="let hero of heroes" (click)="onSelect(hero)" [class.selected]="hero === selectedHero" class="list-group-item list-group-item-dark">
+        <span class="badge badge-primary badge-pill">{{hero.id}}</span> {{hero.name}}
       </li>
     </ul>
   </div>
 
   <div class="col col-sm-8" *ngIf="selectedHero">
     <h3>&nbsp;</h3>
-    <div class="panel panel-primary">
-      <div class="panel-heading">{{ selectedHero.name | uppercase }} details</div>
-      <div class="panel-body">
-        <div class="form-inline">
-          <div><span>id: </span>{{selectedHero.id}}</div>
-          <div class="form-group">
-            <label for="heroName">name:</label>
-            <input type="text" class="form-control" id="heroName"
-                   [(ngModel)]="selectedHero.name" placeholder="Hero name">
-          </div>
-        </div>
-      </div>
-    </div>
+
+    <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+
   </div>
+  
 </div>
 
 <div class="row">
-
-
+  <!-- empty row -->
 </div>
