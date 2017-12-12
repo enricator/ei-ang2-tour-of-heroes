@@ -11,8 +11,8 @@ import { HEROES } from '../mock-heroes';
 
 export class HeroesComponent implements OnInit {
 
+  lsHeroes = "toh-heroes";
   heroes = this.getHeroes();
-
   selectedHero: Hero;
 
   onSelect(hero: Hero): void {
@@ -20,14 +20,14 @@ export class HeroesComponent implements OnInit {
   }
 
   // TODO: update localStorage when hero name is changed in input #heroName
-  
+
   constructor() {  }
 
   ngOnInit() {  }
 
   getHeroes() {
-    let lsHeroes = localStorage.getItem("toh-heroes");
-    let heroesJson = JSON.parse(lsHeroes);
+    //let lsHeroes = "toh-heroes";
+    let heroesJson = JSON.parse(localStorage.getItem(this.lsHeroes));
     if (heroesJson != null) {
       console.log('found localStorage: ' + heroesJson.length + ' heroes');
       return heroesJson;
